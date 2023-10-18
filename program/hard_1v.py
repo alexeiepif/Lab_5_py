@@ -41,8 +41,8 @@ def si(x, eps=1e-10):
 
     return result
 
-
-x = float(input("Введите значение x: "))
-print("Вычисление с использованием scipy.special.sici: ",
-      scipy.special.sici(x)[0])
-print("Вычисление с использованием разложения в ряд: ", si(x))
+if __name__ == '__main__':
+    x = float(input("Введите значение x: "))
+    print("Вычисление с использованием scipy.special.sici: ",
+        scipy.special.sici(x)[0])
+    print("Вычисление с использованием разложения в ряд: ", si(x))
