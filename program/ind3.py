@@ -6,8 +6,6 @@
 # за корову - 5 р., а за теленка - 0,5 р., если на 100 р. надо купить
 # 100 голов скота?
 
-from tracemalloc import stop
-
 
 if __name__ == "__main__":
     for i in range(11):
