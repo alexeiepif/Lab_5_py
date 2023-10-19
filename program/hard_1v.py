@@ -9,40 +9,25 @@
 # 1. Интегральный синус.
 
 import scipy.special
+import math
 import sys
 
 
-def factorial(n):
-    if n < 0:
-        print("Отрицательное число!", file=sys.stderr)
-        exit(1)
-    elif n == 0:
-        return 1
-    else:
-        result = 1
-        for i in range(1, n+1):
-            result *= i
-        return result
-
-
-def si(x, eps=1e-10):
-    result = 0
-    n = 0
-    term = 0
-
-    while True:
-        term = (pow(-1, n) * pow(x, 2*n + 1)) / ((2*n+1)*factorial(2*n + 1))
-        result += term
-
-        if abs(term) < eps:
-            break
-
-        n += 1
-
-    return result
-
 if __name__ == '__main__':
     x = float(input("Введите значение x: "))
+    if x == 0:
+        print("Illegal value of x", file=sys.stderr)
+        exit(1)
+
+    result = x
+    n = 0
+    EPS = 10e-10
+    term = result
+    while math.fabs(term) > EPS:
+        term *= -x**2*(2*n+1)/((2*n+3)**2*(2*n+2))
+        result += term
+        n += 1
+
     print("Вычисление с использованием scipy.special.sici: ",
         scipy.special.sici(x)[0])
-    print("Вычисление с использованием разложения в ряд: ", si(x))
+    print("Вычисление с использованием разложения в ряд: ", result)
