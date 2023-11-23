@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     result = x
     n = 0
-    EPS = 10e-10
+    EPS = 1e-10
     term = result
     while math.fabs(term) > EPS:
         term *= -x**2*(2*n+1)/((2*n+3)**2*(2*n+2))
